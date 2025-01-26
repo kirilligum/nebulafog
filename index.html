@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nebula:Fog:Subprime - Credential Update</title>
+    <style>
+        body {
+            background-color: #00001a;
+            color: #00ff00;
+            font-family: 'Arial', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .update-box {
+            background-color: #000033;
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+            width: 300px;
+        }
+        .update-box h2 {
+            margin-bottom: 20px;
+        }
+        input {
+            margin: 10px 0;
+            padding: 10px;
+            width: 100%;
+            box-sizing: border-box;
+            background-color: #000000;
+            border: 1px solid #00ff00;
+            color: #00ff00;
+        }
+        button {
+            background-color: #00ff00;
+            color: #000000;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            text-transform: uppercase;
+            font-weight: bold;
+            width: 100%;
+            margin-top: 20px;
+        }
+        .success-message {
+            background-color: #003300;
+            color: #00ff00;
+            padding: 20px;
+            text-align: center;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="update-box">
+        <h2>Nebula:Fog:Subprime - Credential Update</h2>
+        <form id="updateForm">
+            <input type="email" id="email" placeholder="Email" required>
+            <input type="password" id="currentPassword" placeholder="Current Password" required>
+            <input type="password" id="newPassword" placeholder="New Password" required>
+            <input type="password" id="confirmPassword" placeholder="Confirm New Password" required>
+            <button type="submit">Update Credentials</button>
+        </form>
+        <div class="success-message" id="successMessage">
+            <h3>Credentials Updated Successfully</h3>
+            <p>Your credentials have been successfully updated. Please log in with your new password next time you sign in.</p>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('updateForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const email = document.getElementById('email').value;
+            const currentPassword = document.getElementById('currentPassword').value;
+            const newPassword = document.getElementById('newPassword').value;
+            const confirmPassword = document.getElementById('confirmPassword').value;
+
+            // In a real scenario, you would validate passwords match here
+            if (newPassword === confirmPassword) {
+                document.getElementById('updateForm').style.display = 'none';
+                document.getElementById('successMessage').style.display = 'block';
+            } else {
+                alert('Passwords do not match!');
+            }
+        });
+    </script>
+</body>
+</html>
